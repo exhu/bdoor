@@ -1,0 +1,11 @@
+Backdoor server and clients.
+
+Use to monitor/debug/develop running applications, e.g. to get remote log/debugging console etc.
+
+Your app uses backdoor client (a running thread inside your application) to connect to the server, 
+then you use the server to control your app,
+e.g. inject commands, monitor components, read logs...
+
+Will use generic protocol, YAML and/or JSON based etc.
+
+Primary target is to use to modify and monitor mobile application state.
