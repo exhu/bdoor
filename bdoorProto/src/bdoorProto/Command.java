@@ -10,8 +10,7 @@ package bdoorProto;
  * @author yur
  */
 public class Command {
-	String cmd;
-	int argDataSize;
-	byte [] argData;
+	Request req;
+	Reply rep;
 	
 }
