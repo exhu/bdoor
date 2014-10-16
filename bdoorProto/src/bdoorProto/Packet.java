@@ -11,9 +11,14 @@ package bdoorProto;
  * @author yur
  */
 public class Packet {
+	protected int dataSize; // size in bytes of packet data (including id, command etc.)
 	protected int id; // new for request, negative for reply
 	protected int command;
-	protected byte [] data; // binary payload
+	
+	/// extra data size in bytes (excluding dataSize, id, command fields)
+	Packet(int userDataSz) {
+		dataSize = userDataSz + 4 * 3;
+	}
 	
 	private static int prevId = 0;
 	

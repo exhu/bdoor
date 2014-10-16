@@ -16,4 +16,9 @@ public class Reply extends Packet {
 	/// 0 = OK, > 0 = extended status, < 0 = error code
 	protected int status;
 	
+	/// extra data
+	Reply(int dataSz) {
+		super(dataSz + 4);
+	}
+	
 }
