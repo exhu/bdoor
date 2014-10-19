@@ -8,9 +8,11 @@ package bdoorProto;
 /**
  *
  * @author yur
+ * @param <REQ>
+ * @param <REP>
  */
-public class Command {
-	Request req;
-	Reply rep;
+public class Command<REQ extends Request, REP extends Reply> {
+	protected REQ req;
+	protected REP rep;
 	
 }
