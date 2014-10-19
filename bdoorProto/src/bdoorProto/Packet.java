@@ -13,14 +13,24 @@ import java.io.InputStream;
  * bin data.
  * @author yur
  */
-public class Packet {
-	protected int dataSize = 0; // size in bytes of packet data (including id, command etc.)
-	protected int id = 0; // new for request, negative for reply
-	protected int command = -1; // zero is reverved for PingCommand
+public abstract class Packet {
+	protected PacketHeader header = new PacketHeader();
+	
+	
+	public static Packet newFromStream(InputStream i, PacketFactory f) {
+		PacketHeader h = new PacketHeader();
+		if (readHeaderFromStream(h, i)) {
+			Packet p = f.newFromHeader(h);
+			p.readFromStream(i);
+			return p;
+		}
+		
+		return null;
+	}
 	
 	/// extra data size in bytes (excluding dataSize, id, command fields)
-	Packet(int userDataSz) {
-		dataSize = userDataSz + 4 * 3;
+	protected Packet(int userDataSz) {
+		header.dataSize += userDataSz;
 	}
 	
 	private static int prevId = 0;
@@ -34,7 +44,7 @@ public class Packet {
 		return prevId;
 	}
 	
-	protected int readInt(InputStream i) throws IOException {
+	static protected int readInt(InputStream i) throws IOException {
 		byte [] bytes = new byte[4];
 		int c = i.read(bytes);
 		if (c < 4)
@@ -44,11 +54,11 @@ public class Packet {
 			| (int)((bytes[2] & 0xFF)<<16) | (int)((bytes[3] & 0xFF)<<24);
 	}
 	
-	public boolean readFromStream(InputStream i) {
+	static protected boolean readHeaderFromStream(PacketHeader h, InputStream i) {
 		try {
-			dataSize = readInt(i);
-			id = readInt(i);
-			command = readInt(i);
+			h.dataSize = readInt(i);
+			h.id = readInt(i);
+			h.command = readInt(i);
 		}
 		catch(IOException e) {
 			return false;
@@ -56,6 +66,9 @@ public class Packet {
 			
 		return true;
 	}
+	
+	/// read only packet specific data, excluding the header
+	public abstract boolean readFromStream(InputStream i);
 	
 	public boolean writeToStream(InputStream i) {
 		// TODO

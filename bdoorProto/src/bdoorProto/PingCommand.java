@@ -15,14 +15,14 @@ public class PingCommand extends Command<PingCommand.PingRequest, PingCommand.Pi
 	static class PingReply extends Reply {
 		PingReply() {
 			super(0);
-			command = COMMAND_ID;
+			header.command = COMMAND_ID;
 		}
 	}
 	
 	static class PingRequest extends Request {
 		PingRequest() {
 			super(0);
-			command = COMMAND_ID;
+			header.command = COMMAND_ID;
 		}
 		
 	}
