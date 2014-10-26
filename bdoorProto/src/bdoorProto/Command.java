@@ -12,7 +12,8 @@ package bdoorProto;
  * @param <REP>
  */
 public class Command<REQ extends Request, REP extends Reply> {
-	protected REQ req;
-	protected REP rep;
-	
+
+    protected REQ req;
+    protected REP rep;
+
 }

@@ -10,7 +10,8 @@ package bdoorProto;
  * @author yur
  */
 public class Request extends Packet {
-	Request(int dataSz) {
-		super(dataSz);
-	}
+
+    Request(PacketHeader h) {
+        super(h);
+    }
 }

@@ -10,20 +10,23 @@ package bdoorProto;
  * @author yur
  */
 public class PingCommand extends Command<PingCommand.PingRequest, PingCommand.PingReply> {
-	public static final int COMMAND_ID = 0;
-	
-	static class PingReply extends Reply {
-		PingReply() {
-			super(0);
-			header.command = COMMAND_ID;
-		}
-	}
-	
-	static class PingRequest extends Request {
-		PingRequest() {
-			super(0);
-			header.command = COMMAND_ID;
-		}
-		
-	}
+
+    public static final int COMMAND_ID = 0;
+
+    static class PingReply extends Reply {
+
+        PingReply(PacketHeader h) {
+            super(h);
+            header.command = COMMAND_ID;
+        }
+    }
+
+    static class PingRequest extends Request {
+
+        PingRequest(PacketHeader h) {
+            super(h);
+            header.command = COMMAND_ID;
+        }
+
+    }
 }

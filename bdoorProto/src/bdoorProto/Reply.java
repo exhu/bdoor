@@ -17,8 +17,13 @@ public class Reply extends Packet {
 	protected int status;
 	
 	/// extra data
-	Reply(int dataSz) {
-		super(dataSz + 4);
-	}
+    @Override
+    public int defaultSize() {
+        return super() + 4;
+    }
+
+    Reply(PacketHeader h) {
+        super(h);
+    }
 	
 }

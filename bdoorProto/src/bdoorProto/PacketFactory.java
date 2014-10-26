@@ -10,6 +10,7 @@ package bdoorProto;
  * @author yur
  */
 public interface PacketFactory {
-	Packet newFromHeader(PacketHeader h);
-	
+
+    Packet newFromHeader(PacketHeader h);
+
 }
