@@ -5,6 +5,9 @@
  */
 package bdoorProto;
 
+import java.io.IOException;
+import java.io.OutputStream;
+
 /**
  *
  * @author yur
@@ -19,8 +22,24 @@ public class Reply extends Packet {
 	/// extra data
     @Override
     public int defaultSize() {
-        return super() + 4;
+        return super.defaultSize() + 4;
     }
+
+    @Override
+    public boolean writeToStream(OutputStream o) {
+        if (super.writeToStream(o)) {
+            try {
+                PacketUtils.writeInt(o, status);
+                return true;
+            }
+            catch(IOException e) {
+                return false;
+            }
+        }
+
+        return false;
+    }
+
 
     Reply(PacketHeader h) {
         super(h);
