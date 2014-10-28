@@ -5,6 +5,8 @@
  */
 package bdoorProto;
 
+import java.io.InputStream;
+
 /**
  *
  * @author yur
@@ -27,6 +29,10 @@ public class PingCommand extends Command<PingCommand.PingRequest, PingCommand.Pi
             super(h);
             header.command = COMMAND_ID;
         }
+
+    public boolean readFromStream(InputStream i) {
+        return true;
+    }
 
     }
 }

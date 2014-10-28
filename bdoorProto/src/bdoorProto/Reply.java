@@ -6,6 +6,7 @@
 package bdoorProto;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
@@ -43,6 +44,11 @@ public class Reply extends Packet {
 
     Reply(PacketHeader h) {
         super(h);
+    }
+
+    @Override
+    public boolean readFromStream(InputStream i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 	
 }

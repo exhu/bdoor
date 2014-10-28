@@ -9,7 +9,7 @@ package bdoorProto;
  *
  * @author yur
  */
-public class Request extends Packet {
+public abstract class Request extends Packet {
 
     Request(PacketHeader h) {
         super(h);
