@@ -9,7 +9,7 @@ package bdoorProto;
  *
  * @author yur
  */
-public class PacketHeader {
+public final class PacketHeader {
 
     public static final int headerSize = 4 * 3;
     public int dataSize = headerSize; // size in bytes of packet data (including id, command etc.)

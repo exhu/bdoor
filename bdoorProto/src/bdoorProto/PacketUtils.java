@@ -13,7 +13,7 @@ import java.io.OutputStream;
  *
  * @author yur
  */
-public class PacketUtils {
+public final class PacketUtils {
 	
     public static Packet newFromStream(InputStream i, PacketFactory f) {
         PacketHeader h = new PacketHeader();

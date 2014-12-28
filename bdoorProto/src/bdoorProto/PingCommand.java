@@ -30,9 +30,9 @@ public class PingCommand extends Command<PingCommand.PingRequest, PingCommand.Pi
             header.command = COMMAND_ID;
         }
 
-    public boolean readFromStream(InputStream i) {
-        return true;
-    }
+        public boolean readFromStream(InputStream i) {
+            return true;
+        }
 
     }
 }
